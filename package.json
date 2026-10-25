@@ -1,20 +1,8 @@
 {
-  "name": "medicart-app",
+  "name": "medicart",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SyedaMushfia/medicart-app.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/SyedaMushfia/medicart-app/issues"
-  },
-  "homepage": "https://github.com/SyedaMushfia/medicart-app#readme"
+    "build": "node --check app.js",
+    "test": "node --test"
+  }
 }
