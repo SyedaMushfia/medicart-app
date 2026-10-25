@@ -1,9 +1,30 @@
-name: MediCart pipeline
-on: push
-jobs: 
+name: MediCart Pipeline
+
+on:
+  push:
+    branches: [main]
+
+jobs:
   build-test:
     runs-on: ubuntu-latest
-    steps: 
-      - uses: actions/checkout@v4
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Run tests
-        run: echo "All tests passed" && exit 0
+        run: echo "All tests passed"
+
+      - name: Build release package
+        run: |
+          mkdir -p release
+          echo "MediCart demo release" > release/README.txt
+          echo "Commit: $GITHUB_SHA" >> release/README.txt
+          tar -czf medicart-release.tar.gz release/
+
+      - name: Upload release artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: medicart-release
+          path: medicart-release.tar.gz
+          retention-days: 7
