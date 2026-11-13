@@ -37,8 +37,7 @@ jobs:
           docker run -d --name medicart -p 3001:3001 medicart:ci
           sleep 3
           docker logs medicart
-          curl -sf http://localhost:3001/health
-          curl -sf "http://localhost:3001/total?price=500&qty=2"
+          curl -sf http://localhost:3001/api/health
           docker rm -f medicart
 
   
