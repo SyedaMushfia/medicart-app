@@ -1,0 +1,6 @@
+{
+  "name": "MediCart – Online Pharmacy & Medicine Delivery",
+  "description": "Modern online pharmacy platform to browse healthcare essentials, place orders with stock protection, track deliveries in real time, and manage orders.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
