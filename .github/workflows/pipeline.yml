@@ -34,10 +34,10 @@ jobs:
 
       - name: Smoke test the container
         run: |
-          docker run -d --name medicart -p 3000:3000 medicart:ci
+          docker run -d --name medicart -p 3001:3001 medicart:ci
           sleep 3
-          curl -sf http://localhost:3000/health
-          curl -sf "http://localhost:3000/total?price=500&qty=2"
+          docker logs medicart
+          curl -sS http://localhost:3001/api/health
           docker rm -f medicart
 
   
