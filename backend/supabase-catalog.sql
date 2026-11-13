@@ -1,0 +1,24 @@
+-- Optional one-time import of the starter medicine catalog.
+-- Existing ids are left unchanged so this does not overwrite live stock.
+insert into public.medicines (
+  id, name, description, price, category_id, stock_quantity, image_url, created_at
+) values
+('med-001', 'Harmony Daily Multivitamin Complex', 'Comprehensive once-daily essential vitamin and mineral formula for vitality and immune defense.', 24.5, 'vitamins', 45, '/images/product_multivitamins_1793340540195.jpg', '2026-10-15T08:00:00Z'),
+('med-002', 'Nova Natural Pure Omega-3 Fish Oil', 'High-potency molecularly distilled EPA and DHA omega-3 softgels with subtle natural lemon essence.', 28, 'vitamins', 38, '/images/product_omega3_1793340541120.jpg', '2026-10-14T09:30:00Z'),
+('med-003', 'MediPrecis IR-100 Digital Infrared Thermometer', 'Instant 1-second non-contact forehead thermometer with high precision medical sensor and color backlight.', 39.99, 'devices', 22, '/images/product_thermometer_1793340540679.jpg', '2026-10-12T14:20:00Z'),
+('med-004', 'Paracetamol Gentle Relief 500mg', 'Fast-acting paracetamol for mild to moderate pain, headaches, muscle aches, and fever reduction.', 6.5, 'medicines', 90, '/images/hero_pharmacy_composition_1793340539574.jpg', '2026-10-10T11:15:00Z'),
+('med-005', 'Ibuprofen Rapid Action 400mg', 'Anti-inflammatory and analgesic softgel capsules for joint stiffness, sprains, and acute headaches.', 8.75, 'medicines', 65, '/images/hero_pharmacy_composition_1793340539574.jpg', '2026-10-11T13:00:00Z'),
+('med-006', 'Herbal Thyme & Ivy Cough Syrup', 'Soothing alcohol-free chest and throat herbal syrup to calm dry and productive coughs.', 14.2, 'medicines', 40, '/images/hero_pharmacy_composition_1793340539574.jpg', '2026-10-13T10:45:00Z'),
+('med-007', 'Sterile First Aid Waterproof Dressing Pack', 'Assorted sterile hypoallergenic adhesive bandages with absorbent non-stick wound pads.', 9.5, 'first-aid', 75, '/images/hero_pharmacy_composition_1793340539574.jpg', '2026-10-09T16:10:00Z'),
+('med-008', 'Antiseptic Tea Tree Wound Cleansing Spray', 'No-sting antiseptic formula with Australian tea tree oil and benzalkonium chloride for minor wounds.', 11, 'first-aid', 50, '/images/hero_pharmacy_composition_1793340539574.jpg', '2026-10-08T12:00:00Z'),
+('med-009', 'Vitamin D3 + K2 Bone & Vascular Complex', 'Synergistic 5000 IU Vitamin D3 with fermented MenaQ7 K2 for optimal calcium distribution.', 21.9, 'vitamins', 35, '/images/product_multivitamins_1793340540195.jpg', '2026-10-16T11:00:00Z'),
+('med-010', 'Magnesium Glycinate High Absorption', 'Pure chelated magnesium gentle on sensitive stomachs to promote calm sleep and muscle recovery.', 26.5, 'vitamins', 55, '/images/product_multivitamins_1793340540195.jpg', '2026-10-17T15:30:00Z'),
+('med-011', 'DermoCalm Ceramide Barrier Recovery Cream', 'Dermatologist-tested restorative cream with 3 essential ceramides, fatty acids, and colloidal oatmeal.', 18.5, 'personal-care', 42, '/images/product_omega3_1793340541120.jpg', '2026-10-07T09:00:00Z'),
+('med-012', 'Ultra-Shield Zinc Mineral Sunscreen SPF 50+', 'Broad-spectrum UVA/UVB non-nano zinc sunscreen with velvety invisible matte finish.', 22, 'personal-care', 28, '/images/product_omega3_1793340541120.jpg', '2026-10-18T10:15:00Z'),
+('med-013', 'BioFlora Daily Pediatric Electrolyte Solution', 'WHO-formulated oral rehydration salts with zinc to rapidly restore fluids during infant illness.', 12.5, 'baby-care', 60, '/images/product_multivitamins_1793340540195.jpg', '2026-10-14T11:20:00Z'),
+('med-014', 'Organic Calendula Baby Calming Diaper Balm', 'Soothing organic calendula, beeswax, and zinc oxide balm to protect sensitive infant skin.', 13.9, 'baby-care', 48, '/images/product_multivitamins_1793340540195.jpg', '2026-10-05T14:30:00Z'),
+('med-015', 'MediPulse Fingertip SpO2 Pulse Oximeter', 'Medical-grade oxygen saturation and pulse rate monitor with multi-directional OLED display.', 29.5, 'devices', 30, '/images/product_thermometer_1793340540679.jpg', '2026-10-19T08:45:00Z'),
+('med-016', 'SmartArm Digital Upper Arm Blood Pressure Monitor', 'Clinically validated automatic blood pressure monitor with comfort cuff and irregular heartbeat detection.', 49.95, 'devices', 18, '/images/product_thermometer_1793340540679.jpg', '2026-10-06T16:00:00Z'),
+('med-017', 'Amoxicillin Antibiotic 500mg (Prescription Verification Required)', 'Broad-spectrum penicillin antibiotic for bacterial respiratory and ear infections.', 18, 'medicines', 50, '/images/hero_pharmacy_composition_1793340539574.jpg', '2026-10-02T10:00:00Z'),
+('med-018', 'Cetirizine 24hr Allergy Relief 10mg', 'Non-drowsy antihistamine for hay fever, pollen allergies, pet dander, and allergic skin hives.', 12, 'medicines', 80, '/images/hero_pharmacy_composition_1793340539574.jpg', '2026-10-15T12:00:00Z')
+on conflict (id) do nothing;
