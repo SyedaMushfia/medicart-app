@@ -1,35 +1,43 @@
-name: MediCart pipeline
+name: MediCart CI/CD
+
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
+  # ---------- CI: runs on GitHub's cloud runner for every PR and push ----------
   build-test:
+    name: CI - build and test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm ci
-      - run: npm run build
-      - run: npm test
 
-  deliver:
-    needs: build-test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-      - run: npm ci
-      - run: npm run build
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: medicart-build-${{ github.sha }}
-          path: dist/
-          retention-days: 7
+          node-version: 26
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Test
+        run: npm test
+
+      - name: Build Docker image
+        run: docker build -t medicart:ci .
+
+      - name: Smoke test the container
+        run: |
+          docker run -d --name medicart -p 3000:3000 medicart:ci
+          sleep 3
+          curl -sf http://localhost:3000/health
+          curl -sf "http://localhost:3000/total?price=500&qty=2"
+          docker rm -f medicart
+
+  
